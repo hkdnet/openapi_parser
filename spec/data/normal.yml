@@ -236,13 +236,13 @@ paths:
                     - $ref: '#/components/schemas/one_of_object2'
                 one_of_with_discriminator:
                   oneOf:
-                    - $ref: '#/components/schemas/one_of_object1'
-                    - $ref: '#/components/schemas/one_of_object2'
+                    - $ref: '#/components/schemas/one_of_with_discriminator_object1'
+                    - $ref: '#/components/schemas/one_of_with_discriminator_object2'
                   discriminator:
                     propertyName: objType
                     mapping:
-                      obj1: '#/components/schemas/one_of_object1'
-                      obj2: '#/components/schemas/one_of_object2'
+                      obj1: '#/components/schemas/one_of_with_discriminator_object1'
+                      obj2: '#/components/schemas/one_of_with_discriminator_object2'
                 object_1:
                   type: object
                   properties:
@@ -608,5 +608,33 @@ components:
         name:
           type: string
         string_1:
+          type: string
+      additionalProperties: false
+    one_of_with_discriminator_object1:
+      type: object
+      required:
+        - name
+        - integer_1
+        - objType
+      properties:
+        name:
+          type: string
+        integer_1:
+          type: integer
+        objType:
+          type: string
+      additionalProperties: false
+    one_of_with_discriminator_object2:
+      type: object
+      required:
+        - name
+        - string_1
+        - objType
+      properties:
+        name:
+          type: string
+        string_1:
+          type: string
+        objType:
           type: string
       additionalProperties: false
