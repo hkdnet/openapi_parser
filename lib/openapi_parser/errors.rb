@@ -221,4 +221,15 @@ module OpenAPIParser
       "#{@value} cannot be less than min items in #{@reference}"
     end
   end
+
+  class AdditionalPropertiesFound < OpenAPIError
+    def initialize(names, reference)
+      super(reference)
+      @names = names
+    end
+
+    def message
+      "additional properties #{@names.join(",")} are found in #{@reference}"
+    end
+  end
 end
